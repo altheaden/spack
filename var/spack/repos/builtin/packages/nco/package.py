@@ -47,6 +47,7 @@ class Nco(AutotoolsPackage):
     patch("NUL-0-NULL.patch", when="@:4.6.7")
 
     variant("doc", default=False, description="Build/install NCO TexInfo-based documentation")
+    variant("openmp", default=True, description="Include OpenMP support")
 
     # See "Compilation Requirements" at:
     # http://nco.sourceforge.net/#bld
@@ -63,7 +64,11 @@ class Nco(AutotoolsPackage):
 
     def configure_args(self):
         spec = self.spec
-        return [f"--{'enable' if '+doc' in spec else 'disable'}-doc"]
+
+        return [
+            f"--{'enable' if ' doc' in spec else 'disable'}-doc",
+            f"--{'enable' if ' openmp' in spec else 'disable'}-openmp",
+        ]
 
     def setup_build_environment(self, env):
         spec = self.spec
