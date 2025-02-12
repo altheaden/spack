@@ -12,6 +12,8 @@ class Nco(AutotoolsPackage):
     homepage = "https://nco.sourceforge.net/"
     url = "https://github.com/nco/nco/archive/5.0.1.tar.gz"
 
+    maintainers("altheaden", "xylar")
+
     license("BSD-3-Clause")
 
     version("5.3.1", sha256="c527e991e1befcc839a14151a2982a20340ab1523ce98b66ef3efa2878ee039b")
